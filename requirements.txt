@@ -1,0 +1,5 @@
+PyOpenGL
+PyOpenGL_accelerate
+pyside6
+PyQt6
+PyQt6-tools
