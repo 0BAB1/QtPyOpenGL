@@ -13,10 +13,10 @@ class OpenGLWidget(QOpenGLWidget):
         glEnable(GL_DEPTH_TEST) #enable depth testing (objects in front obscurs the ones in the back)
         self.shader = self.createShader("shaders/vertex.txt", "shaders/fragment.txt")
         glUseProgram(self.shader)
+        self.triangle = Triangle()
 
     def paintGL(self):
         """called whenever the widget needs to be redrawn, typically in response to a paint event"""
-        self.triangle = Triangle()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) #prepare for rendering the next frame.
         
         glUseProgram(self.shader) #best practice : get the right shader
@@ -59,7 +59,6 @@ def main():
     window.show()
     
     #exit sequence
-    window.opengl_widget.triangle.destroy()
     glDeleteProgram(window.opengl_widget.shader)
     sys.exit(app.exec())
 
